@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   id: number;
   email: string;
   name: string;
@@ -6,25 +6,16 @@ interface User {
   phone: string;
 }
 
-interface UserState {
+export interface UserState {
   email: string;
 }
 
-interface Tokens {
-  accessToken: string;
-  refreshToken: string;
-}
-
-interface UserInitialState {
+export interface UserInitialState {
   user: UserState | null;
   isLoading: string;
 }
 
-interface Credentials {
+export interface Credentials {
   email: string;
   password: string;
-}
-
-interface AuthResponse extends Tokens {
-  user: User;
 }
