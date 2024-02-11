@@ -1,9 +1,9 @@
 export interface User {
-  id: number;
   email: string;
-  name: string;
-  avatarPath: string;
-  phone: string;
+  password?: string;
+  name?: string;
+  avatarPath?: string;
+  phone?: string;
 }
 
 export interface UserState {

@@ -7,10 +7,12 @@ import { saveToStorage } from "./helpers";
 import { AuthType } from "../model/types";
 import { TokenType } from "@/shared/types";
 
+const AUTH = "auth";
+
 export const AuthService = {
   async main(type: AuthType.LOGIN | AuthType.REGISTER, data: Credential) {
     const response = await instance<AuthResponse>({
-      url: `/auth/${type}`,
+      url: `/${AUTH}/${type}`,
       method: "POST",
       data,
     });
@@ -26,7 +28,7 @@ export const AuthService = {
     const refreshToken = cookies().get(TokenType.REFRESH);
 
     const response = await axios.post<string, { data: AuthResponse }>(
-      process.env.SERVER_URL + "/auth/login/access-token",
+      process.env.SERVER_URL + `/${AUTH}/login/access-token`,
       { refreshToken },
       {
         headers: getContentType(),
