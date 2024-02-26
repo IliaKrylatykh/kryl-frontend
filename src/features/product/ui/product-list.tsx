@@ -2,32 +2,27 @@
 
 import { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { ProductCard } from "./product-card";
-import { Product } from "@/entities/product";
 import { CreateProductForm } from "./create-product-form";
+import { Product } from "@/entities/product";
+import { ProductService } from "@/entities/product";
 
-const ProductList: FC = () => {
+export const ProductList: FC = () => {
   const query = useQuery({
     queryKey: ["products"],
-    queryFn: () => axios.get("https://api.kryl.shop/api/products"),
+    queryFn: async () => {
+      const response = await ProductService.getAll();
+      return response.data;
+    },
   });
+  const products = query.data?.products;
 
   return (
     <div>
       <CreateProductForm />
-      {query.data?.data?.products.map((item: Product) => (
-        <ProductCard
-          key={1}
-          name={item.name}
-          description={item.description}
-          price={item.price}
-          images={item.images}
-          categoryId={item.categoryId}
-        />
+      {products?.map((product: Product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
 };
-
-export default ProductList;

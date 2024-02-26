@@ -1,5 +1,4 @@
-import { ProductCard } from "@/features/product/ui/product-card";
-import ProductList from "@/features/product/ui/product-list";
+import { ProductList } from "@/features/product";
 import { ToggleTheme } from "@/features/theme/toggle-theme";
 
 export default function Home() {

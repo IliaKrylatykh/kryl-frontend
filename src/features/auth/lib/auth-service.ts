@@ -1,6 +1,6 @@
-import { getContentType } from "@/shared/api/helpers";
+import Cookies from "js-cookie";
 import axios from "axios";
-import { cookies } from "next/headers";
+import { getContentType } from "@/shared/api/helpers";
 import { AuthResponse } from "../model/types";
 import { instance } from "@/shared/api/interceptor";
 import { saveToStorage } from "./helpers";
@@ -25,7 +25,7 @@ export const AuthService = {
   },
 
   async getNewTokens() {
-    const refreshToken = cookies().get(TokenType.REFRESH);
+    const refreshToken = Cookies.get(TokenType.REFRESH);
 
     const response = await axios.post<string, { data: AuthResponse }>(
       process.env.SERVER_URL + `/${AUTH}/login/access-token`,

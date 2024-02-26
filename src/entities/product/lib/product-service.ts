@@ -1,12 +1,11 @@
 import { instance } from "@/shared/api/interceptor";
-import { ProductExtended, ProductFilter } from "../model/types";
-import { Product } from "@/entities/product";
+import { Product, ProductFilter } from "../model/types";
 
 const PRODUCTS = "products";
 
 export const ProductService = {
   async getAll(queryData?: ProductFilter) {
-    return instance<Product[]>({
+    return instance<{ length: number; products: Product[] }>({
       url: PRODUCTS,
       method: "GET",
       params: queryData,
@@ -42,7 +41,7 @@ export const ProductService = {
   },
 
   async create(data: Product) {
-    return instance<ProductExtended>({
+    return instance<Product>({
       url: PRODUCTS,
       method: "POST",
       data,
@@ -50,7 +49,7 @@ export const ProductService = {
   },
 
   async update(id: string | number, data: Product) {
-    return instance<ProductExtended>({
+    return instance<Product>({
       url: `${PRODUCTS}/${id}`,
       method: "PUT",
       data,
@@ -58,7 +57,7 @@ export const ProductService = {
   },
 
   async delete(id: string | number) {
-    return instance<ProductExtended>({
+    return instance<Product>({
       url: `${PRODUCTS}/${id}`,
       method: "DELETE",
     });

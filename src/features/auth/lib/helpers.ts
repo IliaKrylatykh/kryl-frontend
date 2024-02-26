@@ -1,10 +1,10 @@
-import { cookies } from "next/headers";
+import Cookies from "js-cookie";
 import { AuthResponse } from "../model/types";
 import { TokenType, Tokens } from "@/shared/types";
 
 export const saveTokensToStorage = (data: Tokens) => {
-  cookies().set(TokenType.ACCESS, data.accessToken);
-  cookies().set(TokenType.REFRESH, data.refreshToken);
+  Cookies.set(TokenType.ACCESS, data.accessToken);
+  Cookies.set(TokenType.REFRESH, data.refreshToken);
 };
 
 export const saveToStorage = (data: AuthResponse) => {

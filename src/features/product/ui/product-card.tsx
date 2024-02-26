@@ -11,17 +11,15 @@ import { Label } from "@/shared/ui/label";
 import Image from "next/image";
 import { FC } from "react";
 
-export const ProductCard: FC<Product> = ({
-  name,
-  description,
-  price,
-  categoryId,
-  images,
-}) => {
+interface ProductCardProps {
+  product: Product;
+}
+
+export const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle>{product.name}</CardTitle>
       </CardHeader>
       <CardContent>
         <Image
@@ -31,11 +29,11 @@ export const ProductCard: FC<Product> = ({
           height={475}
           layout="responsive"
         />
-        <Label htmlFor="name">{description}</Label>
+        <Label htmlFor="name">{product.description}</Label>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Label htmlFor="name">{price}</Label>
-        <Label htmlFor="name">{categoryId}</Label>
+        <Label htmlFor="name">{product.price}</Label>
+        <Label htmlFor="name">{product.categoryId}</Label>
         <Button>Buy</Button>
       </CardFooter>
     </Card>

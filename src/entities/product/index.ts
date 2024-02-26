@@ -1,1 +1,3 @@
-export type { Product } from "./model/types";
+export { ProductService } from "./lib/product-service";
+
+export type { Product, ProductFilter, ProductsSort } from "./model/types";

@@ -1,6 +1,5 @@
-import { AuthResponse } from "@/features/auth/model/types";
+import Cookies from "js-cookie";
 import { AxiosError } from "axios";
-import { cookies } from "next/headers";
 import { LocalStorage, TokenType } from "../types";
 
 export const getContentType = () => ({
@@ -18,8 +17,7 @@ export const errorCatch = (error: AxiosError): string => {
 };
 
 export const getAccessToken = () => {
-  const cookieStore = cookies();
-  const accessToken = cookieStore.get(TokenType.ACCESS);
+  const accessToken = Cookies.get(TokenType.ACCESS);
   return accessToken || null;
 };
 
@@ -28,7 +26,7 @@ export const getUserFromStorage = () => {
 };
 
 export const deleteTokensFromStorage = () => {
-  cookies().delete(TokenType.ACCESS);
-  cookies().delete(TokenType.REFRESH);
+  Cookies.remove(TokenType.ACCESS);
+  Cookies.remove(TokenType.REFRESH);
   localStorage.removeItem(LocalStorage.USER);
 };
