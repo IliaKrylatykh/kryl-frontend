@@ -14,7 +14,6 @@ import { z } from "zod";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/ui/utils";
 import { Product, ProductService } from "@/entities/product";
-import axios from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/shared/api/query-client";
 import { EditProduct } from "@/entities/product/model/types";
