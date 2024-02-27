@@ -6,16 +6,15 @@ import { ProductCard } from "./product-card";
 import { CreateProductForm } from "./create-product-form";
 import { Product } from "@/entities/product";
 import { ProductService } from "@/entities/product";
+import { useProducts } from "@/entities/product/lib/useProducts";
 
 export const ProductList: FC = () => {
-  const query = useQuery({
-    queryKey: ["products"],
-    queryFn: async () => {
-      const response = await ProductService.getAll();
-      return response.data;
-    },
-  });
-  const products = query.data?.products;
+  const { data, isLoading } = useProducts();
+  const products = data?.products;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>

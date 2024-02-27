@@ -50,3 +50,11 @@ export enum ProductsSort {
   NEWEST = "newest",
   OLDEST = "oldest",
 }
+
+export interface EditProduct {
+  name: string;
+  price: number;
+  description: string;
+  images: string[];
+  categoryId: number;
+}

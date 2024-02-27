@@ -1,5 +1,6 @@
 import { instance } from "@/shared/api/interceptor";
-import { Product, ProductFilter } from "../model/types";
+import { Product, ProductFilter, EditProduct } from "../model/types";
+import axios from "axios";
 
 const PRODUCTS = "products";
 
@@ -40,8 +41,8 @@ export const ProductService = {
     });
   },
 
-  async create(data: Product) {
-    return instance<Product>({
+  async create(data: EditProduct) {
+    return instance({
       url: PRODUCTS,
       method: "POST",
       data,
