@@ -5,13 +5,13 @@ export function MainNav() {
     <nav className="flex items-start md:items-center gap-6 text-sm font-medium flex-col md:flex-row ">
       <Link
         className="transition-colors hover:text-foreground/80 text-foreground/60"
-        href="/map"
+        href="/auth"
       >
         Link 1
       </Link>
       <Link
         className="transition-colors hover:text-foreground/80 text-foreground/60"
-        href="/learn"
+        href="/auth"
       >
         Link 2
       </Link>

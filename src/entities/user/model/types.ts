@@ -14,8 +14,3 @@ export interface UserInitialState {
   user: UserState | null;
   isLoading: string;
 }
-
-export interface Credentials {
-  email: string;
-  password: string;
-}
